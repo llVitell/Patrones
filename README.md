@@ -104,13 +104,26 @@ Utilizamos los decoradores para extender la funcionalidad de una instancia de la
 Creamos objetos de diferentes clases relacionadas con la manipulación y seguimiento de canciones, y luego se llama a un método reproducir en uno de esos objetos.
 
 ```Ruby
-mi_cancion = Cancion.new("Imagine", "John Lennon")
+cancion_decorator = Cancion.new("Imagine", "John Lennon")
 
-cancion_con_contador = ContadorDeReproducciones.new(mi_cancion)
+cancion_con_contador = ContadorDeReproducciones.new(cancion_decorator)
 cancion_con_etiquetas = EtiquetadorDeGenero.new(cancion_con_contador, "Rock")
 
-cancion_con_etiquetas.reproducir
+3.times { cancion_con_etiquetas.reproducir }   #ejecuta la función 3 veces
+
+# Salida esperada:
+# Género: Rock
+# Reproducciones: 1
+# Reproduciendo 'Imagine' de 'John Lennon'.
+# Género: Rock
+# Reproducciones: 2
+# Reproduciendo 'Imagine' de 'John Lennon'.
+# Género: Rock
+# Reproducciones: 3
+# Reproduciendo 'Imagine' de 'John Lennon'.
 ```
+
+
 
 ## Patrón Composite
 El uso del patrón Composite nos permite componer objetos en estructuras de árbol y trabajar con esas estructuras como si fueran objetos individuales, en este caso vamos a 
