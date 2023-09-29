@@ -14,6 +14,8 @@ Supongamos que estás desarrollando un reproductor de música y necesitas una so
 
 - Etiquetas de Género: Deseas poder asociar etiquetas de género a ciertas canciones y mostrarlas cuando se reproduce una canción.
 
+- Lista de reproducción: Se necesita poder crear listas de reproducción que pueden contener tanto canciones individuales como otras listas de reproducción. 
+
 - Ordenación de Canciones: Los usuarios deben poder ordenar las canciones en una lista de reproducción por artista o título según sus preferencias.
 
 **Solución**
