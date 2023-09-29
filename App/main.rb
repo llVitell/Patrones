@@ -5,8 +5,7 @@ require_relative 'Decorator/etiquetador_de_genero'
 require_relative 'estrategia_ordenar'
 require_relative 'lista_reproduccion'
 
-cancion1 = Cancion.new("Mi primer amor", "Armonia 10")
-cancion2 = Cancion.new("Tu amor fue una mentira", "Agua Marina")
+mi_cancion = Cancion.new("Imagine", "John Lennon")
 
 cancion1 = ContadorDeReproducciones.new(cancion1)
 cancion2 = EtiquetadorDeGenero.new(cancion2, "Cumbia")

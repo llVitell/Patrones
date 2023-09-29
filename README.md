@@ -37,13 +37,15 @@ end
 Esta clase recibe como parámetros un título y un artista, también tiene un método que reproduce la canción especificada. En las siguientes clases implementaremos patrones de diseño como `Decorator`, `Composite` y `Strategy` para resolver problemas comunes en este tipo de programas
 ***
 ## Patrón Decorator
-
 El patrón Decorator se utiliza para agregar funcionalidades adicionales a los objetos de nuestra clase `Cancion` sin modificar su estructura original.
 Primero, crearemos una clase decoradora base que se encargará de "envolver" el objeto original.
+<p align="center">
+  <img src="Imagenes/decorator.jpeg" />
+</p>
 
 ### Clase Base Decoradora
 
-```ruby
+```Ruby
 class CancionDecorator
   attr_reader :cancion
   
@@ -63,7 +65,7 @@ Ahora, creamos decoradores específicos para las funcionalidades.
 
 Para contar las veces que se ha reproducido cada canción, implementamos un decorador específico.
 
-```ruby
+```Ruby
 class ContadorDeReproducciones < CancionDecorator
   def initialize(cancion)
     super(cancion)
@@ -82,7 +84,7 @@ end
 
 Para añadir etiquetas de género a las canciones, usamos otro decorador específico.
 
-```ruby
+```Ruby
 class EtiquetadorDeGenero < CancionDecorator
   def initialize(cancion, genero)
     super(cancion)
@@ -99,19 +101,75 @@ end
 ### Uso del Decorator
 
 Utilizamos los decoradores para extender la funcionalidad de una instancia de la clase `Cancion`.
+Creamos objetos de diferentes clases relacionadas con la manipulación y seguimiento de canciones, y luego se llama a un método reproducir en uno de esos objetos.
 
-```ruby
-# Crear una canción
-mi_cancion = Cancion.new("Imagine", "John Lennon")
+```Ruby
+cancion_decorator = Cancion.new("Imagine", "John Lennon")
 
-# Decorar para contar reproducciones y añadir género
-cancion_con_contador = ContadorDeReproducciones.new(mi_cancion)
+cancion_con_contador = ContadorDeReproducciones.new(cancion_decorator)
 cancion_con_etiquetas = EtiquetadorDeGenero.new(cancion_con_contador, "Rock")
 
-# Reproducir la canción
-cancion_con_etiquetas.reproducir
+3.times { cancion_con_etiquetas.reproducir }   #ejecuta la función 3 veces
+
+# Salida esperada:
+# Género: Rock
+# Reproducciones: 1
+# Reproduciendo 'Imagine' de 'John Lennon'.
+# Género: Rock
+# Reproducciones: 2
+# Reproduciendo 'Imagine' de 'John Lennon'.
+# Género: Rock
+# Reproducciones: 3
+# Reproduciendo 'Imagine' de 'John Lennon'.
 ```
 
 ## Patrón Composite
-***
+El uso del patrón Composite nos permite componer objetos en estructuras de árbol y trabajar con esas estructuras como si fueran objetos individuales, en este caso vamos a 
+tratar tanto las listas de reproducción como las canciones individuales de manera uniforme al llamar al método reproducir en la lista de reproducción principal, 
+lo que a su vez reproduce todas las canciones o listas de reproducción que contiene, si esque las hay.
+<p align="center"><img src="Imagenes/composite.jpeg"/></p>
+
+```Ruby
+ class ListaReproduccion
+    attr_accessor :nombre
+    def initialize(nombre)
+      @nombre = nombre
+      @elementos = []
+    end
+  
+    def agregar(elemento)
+      @elementos << elemento
+    end
+  
+    def reproducir
+      puts "Reproduciendo lista de reproducción: #{@nombre}"
+      @elementos.each(&:reproducir)
+    end
+  end
+```
+
 ## Patrón Strategy
+
+Strategy es un patrón de diseño de comportamiento que te permite definir una familia de algoritmos, colocar cada uno de ellos en una clase separada y hacer sus objetos intercambiables. (en este caso, `OrdenarPorArtista` y `ordenarPorTitulo`) sean intercambiables sin cambiar el código que las utiliza. Esto es útil cuando se quiere cambiar la forma en que se ordena una colección de objetos en tiempo de ejecución sin modificar el código existente.
+
+<p align="center"><img src="Imagenes/strategy.jpeg"/></p>
+
+```Ruby
+ class EstrategiaOrdenar
+    def ordenar(canciones)
+      raise NotImplementedError, "Debes implementar el método 'ordenar' en la estrategia concreta."
+    end
+  end
+  
+  class OrdenarPorArtista < EstrategiaOrdenar
+    def ordenar(canciones)
+      canciones.sort_by! { |c| c.artista }
+    end
+  end
+  
+  class OrdenarPorTitulo < EstrategiaOrdenar
+    def ordenar(canciones)
+      canciones.sort_by! { |c| c.titulo }
+    end
+  end
+```
