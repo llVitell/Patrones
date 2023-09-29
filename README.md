@@ -113,5 +113,42 @@ cancion_con_etiquetas.reproducir
 ```
 
 ## Patrón Composite
-***
+
+```ruby
+ class ListaReproduccion
+    attr_accessor :nombre
+    def initialize(nombre)
+      @nombre = nombre
+      @elementos = []
+    end
+  
+    def agregar(elemento)
+      @elementos << elemento
+    end
+  
+    def reproducir
+      puts "Reproduciendo lista de reproducción: #{@nombre}"
+      @elementos.each(&:reproducir)
+    end
+  end
+```
 ## Patrón Strategy
+```ruby
+ class EstrategiaOrdenar
+    def ordenar(canciones)
+      raise NotImplementedError, "Debes implementar el método 'ordenar' en la estrategia concreta."
+    end
+  end
+  
+  class OrdenarPorArtista < EstrategiaOrdenar
+    def ordenar(canciones)
+      canciones.sort_by! { |c| c.artista }
+    end
+  end
+  
+  class OrdenarPorTitulo < EstrategiaOrdenar
+    def ordenar(canciones)
+      canciones.sort_by! { |c| c.titulo }
+    end
+  end
+```
