@@ -42,7 +42,7 @@ Primero, crearemos una clase decoradora base que se encargará de "envolver" el 
 <center><img src="Imagenes/decorator.jpeg"/></center>
 ### Clase Base Decoradora
 
-```ruby
+```Ruby
 class CancionDecorator
   attr_reader :cancion
   
@@ -62,7 +62,7 @@ Ahora, creamos decoradores específicos para las funcionalidades.
 
 Para contar las veces que se ha reproducido cada canción, implementamos un decorador específico.
 
-```ruby
+```Ruby
 class ContadorDeReproducciones < CancionDecorator
   def initialize(cancion)
     super(cancion)
@@ -81,7 +81,7 @@ end
 
 Para añadir etiquetas de género a las canciones, usamos otro decorador específico.
 
-```ruby
+```Ruby
 class EtiquetadorDeGenero < CancionDecorator
   def initialize(cancion, genero)
     super(cancion)
@@ -99,7 +99,7 @@ end
 
 Utilizamos los decoradores para extender la funcionalidad de una instancia de la clase `Cancion`.
 
-```ruby
+```Ruby
 mi_cancion = Cancion.new("Imagine", "John Lennon")
 
 cancion_con_contador = ContadorDeReproducciones.new(mi_cancion)
@@ -109,8 +109,10 @@ cancion_con_etiquetas.reproducir
 ```
 
 ## Patrón Composite
+
 <center><img src="Imagenes/composite.jpeg"/></center>
-```ruby
+
+```Ruby
  class ListaReproduccion
     attr_accessor :nombre
     def initialize(nombre)
@@ -130,8 +132,10 @@ cancion_con_etiquetas.reproducir
 ```
 
 ## Patrón Strategy
+
 <center><img src="Imagenes/strategy.jpeg"/></center>
-```ruby
+
+```Ruby
  class EstrategiaOrdenar
     def ordenar(canciones)
       raise NotImplementedError, "Debes implementar el método 'ordenar' en la estrategia concreta."
