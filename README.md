@@ -116,7 +116,7 @@ cancion_con_etiquetas.reproducir
 El uso del patrón Composite nos permite componer objetos en estructuras de árbol y trabajar con esas estructuras como si fueran objetos individuales, en este caso vamos a 
 tratar tanto las listas de reproducción como las canciones individuales de manera uniforme al llamar al método reproducir en la lista de reproducción principal, 
 lo que a su vez reproduce todas las canciones o listas de reproducción que contiene, si esque las hay.
-<center><img src="Imagenes/composite.jpeg"/></center>
+<p align="center"><img src="Imagenes/composite.jpeg"/></p>
 
 ```Ruby
  class ListaReproduccion
@@ -141,7 +141,7 @@ lo que a su vez reproduce todas las canciones o listas de reproducción que cont
 
 Strategy es un patrón de diseño de comportamiento que te permite definir una familia de algoritmos, colocar cada uno de ellos en una clase separada y hacer sus objetos intercambiables. (en este caso, `OrdenarPorArtista` y `ordenarPorTitulo`) sean intercambiables sin cambiar el código que las utiliza. Esto es útil cuando se quiere cambiar la forma en que se ordena una colección de objetos en tiempo de ejecución sin modificar el código existente.
 
-<center><img src="Imagenes/strategy.jpeg"/></center>
+<p align="center"><img src="Imagenes/strategy.jpeg"/></p>
 
 ```Ruby
  class EstrategiaOrdenar
