@@ -98,6 +98,7 @@ end
 ### Uso del Decorator
 
 Utilizamos los decoradores para extender la funcionalidad de una instancia de la clase `Cancion`.
+Creamos objetos de diferentes clases relacionadas con la manipulación y seguimiento de canciones, y luego se llama a un método reproducir en uno de esos objetos.
 
 ```Ruby
 mi_cancion = Cancion.new("Imagine", "John Lennon")
@@ -109,7 +110,8 @@ cancion_con_etiquetas.reproducir
 ```
 
 ## Patrón Composite
-
+El uso del patrón Composite nos permite tratar tanto las listas de reproducción como las canciones individuales de manera uniforme al llamar al método reproducir en la lista de reproducción principal, 
+lo que a su vez reproduce todas las canciones o listas de reproducción que contiene, si esque las hay.
 <center><img src="Imagenes/composite.jpeg"/></center>
 
 ```Ruby
@@ -132,6 +134,8 @@ cancion_con_etiquetas.reproducir
 ```
 
 ## Patrón Strategy
+
+El patrón Strategy permite que diferentes estrategias de ordenamiento (en este caso, `OrdenarPorArtista` y `ordenarPorTitulo`) sean intercambiables sin cambiar el código que las utiliza. Esto es útil cuando se quiere cambiar la forma en que se ordena una colección de objetos en tiempo de ejecución sin modificar el código existente.
 
 <center><img src="Imagenes/strategy.jpeg"/></center>
 
