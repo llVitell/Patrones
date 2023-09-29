@@ -37,10 +37,9 @@ end
 Esta clase recibe como parámetros un título y un artista, también tiene un método que reproduce la canción especificada. En las siguientes clases implementaremos patrones de diseño como `Decorator`, `Composite` y `Strategy` para resolver problemas comunes en este tipo de programas
 ***
 ## Patrón Decorator
-
 El patrón Decorator se utiliza para agregar funcionalidades adicionales a los objetos de nuestra clase `Cancion` sin modificar su estructura original.
 Primero, crearemos una clase decoradora base que se encargará de "envolver" el objeto original.
-
+<center><img src="Imagenes/decorator.jpeg"/></center>
 ### Clase Base Decoradora
 
 ```ruby
@@ -101,19 +100,16 @@ end
 Utilizamos los decoradores para extender la funcionalidad de una instancia de la clase `Cancion`.
 
 ```ruby
-# Crear una canción
 mi_cancion = Cancion.new("Imagine", "John Lennon")
 
-# Decorar para contar reproducciones y añadir género
 cancion_con_contador = ContadorDeReproducciones.new(mi_cancion)
 cancion_con_etiquetas = EtiquetadorDeGenero.new(cancion_con_contador, "Rock")
 
-# Reproducir la canción
 cancion_con_etiquetas.reproducir
 ```
 
 ## Patrón Composite
-
+<center><img src="Imagenes/composite.jpeg"/></center>
 ```ruby
  class ListaReproduccion
     attr_accessor :nombre
@@ -132,7 +128,9 @@ cancion_con_etiquetas.reproducir
     end
   end
 ```
+
 ## Patrón Strategy
+<center><img src="Imagenes/strategy.jpeg"/></center>
 ```ruby
  class EstrategiaOrdenar
     def ordenar(canciones)
