@@ -1,14 +1,15 @@
 require_relative 'cancion'
-require_relative 'contador_reproducciones'
+require_relative 'Decorator/cancion_decorator'
+require_relative 'Decorator/contador_de_reproducciones'
+require_relative 'Decorator/etiquetador_de_genero'
 require_relative 'estrategia_ordenar'
-require_relative 'etiquetas_genero'
 require_relative 'lista_reproduccion'
 
 cancion1 = Cancion.new("Mi primer amor", "Armonia 10")
 cancion2 = Cancion.new("Tu amor fue una mentira", "Agua Marina")
 
-cancion1 = ContadorReproducciones.new(cancion1)
-cancion2 = EtiquetasGenero.new(cancion2, "Cumbia")
+cancion1 = ContadorDeReproducciones.new(cancion1)
+cancion2 = EtiquetadorDeGenero.new(cancion2, "Cumbia")
 
 lista = ListaReproduccion.new("Clásicos Peruanos")
 lista.agregar(cancion1)
@@ -22,3 +23,13 @@ puts "Canciones ordenadas por artista:"
 canciones.each { |c| puts "#{c.artista} - #{c.titulo}" }
 
 lista.reproducir
+puts "\n"
+puts "\n"
+
+puts "Patron Decorator\n"
+cancion_decorator = Cancion.new("Imagine", "John Lennon")
+
+cancion_con_contador = ContadorDeReproducciones.new(cancion_decorator)
+cancion_con_etiquetas = EtiquetadorDeGenero.new(cancion_con_contador, "Rock")
+
+3.times { cancion_con_etiquetas.reproducir }   #ejecuta la función 3 veces
