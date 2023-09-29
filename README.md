@@ -98,7 +98,7 @@ end
 
 ### Uso del Decorator
 
-A continuación, se muestra cómo utilizar los decoradores para extender la funcionalidad de una instancia de la clase `Cancion`.
+Utilizamos los decoradores para extender la funcionalidad de una instancia de la clase `Cancion`.
 
 ```ruby
 # Crear una canción
