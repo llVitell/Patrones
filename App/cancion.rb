@@ -9,4 +9,4 @@ class Cancion
     def reproducir
       puts "Reproduciendo '#{titulo}' de '#{artista}'."
     end
-  end
+end

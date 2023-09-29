@@ -14,6 +14,8 @@ Supongamos que estás desarrollando un reproductor de música y necesitas una so
 
 - Etiquetas de Género: Deseas poder asociar etiquetas de género a ciertas canciones y mostrarlas cuando se reproduce una canción.
 
+- Lista de reproducción: Se necesita poder crear listas de reproducción que pueden contener tanto canciones individuales como otras listas de reproducción. 
+
 - Ordenación de Canciones: Los usuarios deben poder ordenar las canciones en una lista de reproducción por artista o título según sus preferencias.
 
 **Solución**
@@ -35,7 +37,81 @@ end
 Esta clase recibe como parámetros un título y un artista, también tiene un método que reproduce la canción especificada. En las siguientes clases implementaremos patrones de diseño como `Decorator`, `Composite` y `Strategy` para resolver problemas comunes en este tipo de programas
 ***
 ## Patrón Decorator
-***
+
+El patrón Decorator se utiliza para agregar funcionalidades adicionales a los objetos de nuestra clase `Cancion` sin modificar su estructura original.
+Primero, crearemos una clase decoradora base que se encargará de "envolver" el objeto original.
+
+### Clase Base Decoradora
+
+```ruby
+class CancionDecorator
+  attr_reader :cancion
+  
+  def initialize(cancion)
+    @cancion = cancion
+  end
+  
+  def reproducir
+    @cancion.reproducir
+  end
+end
+```
+
+Ahora, creamos decoradores específicos para las funcionalidades.
+
+### Conteo de Reproducciones
+
+Para contar las veces que se ha reproducido cada canción, implementamos un decorador específico.
+
+```ruby
+class ContadorDeReproducciones < CancionDecorator
+  def initialize(cancion)
+    super(cancion)
+    @reproducciones = 0
+  end
+  
+  def reproducir
+    @reproducciones += 1
+    puts "Reproducciones: #{@reproducciones}"
+    super
+  end
+end
+```
+
+### Etiquetas de Género
+
+Para añadir etiquetas de género a las canciones, usamos otro decorador específico.
+
+```ruby
+class EtiquetadorDeGenero < CancionDecorator
+  def initialize(cancion, genero)
+    super(cancion)
+    @genero = genero
+  end
+  
+  def reproducir
+    puts "Género: #{@genero}"
+    super
+  end
+end
+```
+
+### Uso del Decorator
+
+Utilizamos los decoradores para extender la funcionalidad de una instancia de la clase `Cancion`.
+
+```ruby
+# Crear una canción
+mi_cancion = Cancion.new("Imagine", "John Lennon")
+
+# Decorar para contar reproducciones y añadir género
+cancion_con_contador = ContadorDeReproducciones.new(mi_cancion)
+cancion_con_etiquetas = EtiquetadorDeGenero.new(cancion_con_contador, "Rock")
+
+# Reproducir la canción
+cancion_con_etiquetas.reproducir
+```
+
 ## Patrón Composite
 ***
 ## Patrón Strategy
