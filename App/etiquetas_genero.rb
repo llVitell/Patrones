@@ -1,3 +1,4 @@
+require_relative 'cancion'
 class EtiquetadorDeGenero < CancionDecorator
   def initialize(cancion, genero)
     super(cancion)

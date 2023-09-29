@@ -1,3 +1,4 @@
+require_relative 'cancion'
 class ContadorDeReproducciones < CancionDecorator
   def initialize(cancion)
     super(cancion)
