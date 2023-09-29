@@ -110,19 +110,17 @@ cancion_con_contador = ContadorDeReproducciones.new(cancion_decorator)
 cancion_con_etiquetas = EtiquetadorDeGenero.new(cancion_con_contador, "Rock")
 
 3.times { cancion_con_etiquetas.reproducir }   #ejecuta la función 3 veces
-```
-### Salida esperada
 
-```text
-Género: Rock
-Reproducciones: 1
-Reproduciendo 'Imagine' de 'John Lennon'.
-Género: Rock
-Reproducciones: 2
-Reproduciendo 'Imagine' de 'John Lennon'.
-Género: Rock
-Reproducciones: 3
-Reproduciendo 'Imagine' de 'John Lennon'.
+# Salida esperada:
+# Género: Rock
+# Reproducciones: 1
+# Reproduciendo 'Imagine' de 'John Lennon'.
+# Género: Rock
+# Reproducciones: 2
+# Reproduciendo 'Imagine' de 'John Lennon'.
+# Género: Rock
+# Reproducciones: 3
+# Reproduciendo 'Imagine' de 'John Lennon'.
 ```
 
 ## Patrón Composite
