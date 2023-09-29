@@ -39,7 +39,7 @@ Esta clase recibe como parámetros un título y un artista, también tiene un m�
 ## Patrón Decorator
 El patrón Decorator se utiliza para agregar funcionalidades adicionales a los objetos de nuestra clase `Cancion` sin modificar su estructura original.
 Primero, crearemos una clase decoradora base que se encargará de "envolver" el objeto original.
-<div style="text-align:center"><img src="Imagenes/decorator.jpeg" /></div>
+<div style="text-align:center !important"><img src="Imagenes/decorator.jpeg" /></div>
 
 ### Clase Base Decoradora
 
