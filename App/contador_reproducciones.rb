@@ -1,13 +1,12 @@
-class ContadorReproducciones
-  attr_reader :cancion
+class ContadorDeReproducciones < CancionDecorator
   def initialize(cancion)
-    @cancion = cancion
-    @contador = 0
+    super(cancion)
+    @reproducciones = 0
   end
   
   def reproducir
-    @contador += 1
-    cancion.reproducir
-    puts "Esta canción se ha reproducido #{@contador} veces."
+    @reproducciones += 1
+    puts "Reproducciones: #{@reproducciones}"
+    super
   end
 end
